@@ -8,7 +8,7 @@ const OurFeatures = () => {
             .then(res => res.json())
             .then(data => setFeatures(data))
     }, [])
-    console.log(features)
+    // console.log(features)
     return (
         <div>
 
