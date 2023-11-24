@@ -1,0 +1,17 @@
+[
+    {
+        "icon": "https://i.ibb.co/0QjfFwW/parcel-protection.jpg",
+        "FeatureTitle": "Parcel Safety",
+        "description": "Your peace of mind matters. Our stringent safety protocols ensure your parcels are handled with utmost care throughout the journey, guaranteeing secure and intact deliveries."
+    },
+    {
+        "icon": "https://i.ibb.co/6vfRv88/5952766.png",
+        "FeatureTitle": "Super Fast Delivery",
+        "description": "Need it now? Experience lightning-fast deliveries tailored to your urgency. With our expedited services, your parcels reach their destination swiftly and reliably."
+    },
+    {
+        "icon": "https://cdn.iconscout.com/icon/premium/png-256-thumb/multiple-delivery-8442072-6645100.png",
+        "FeatureTitle": "Multiple Delivery Options",
+        "description": "Choices that fit your schedule. Select from our array of delivery options - express, standard, or flexible, allowing you to personalize each delivery based on your timeline and preferences."
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "title": "Parcel Booked",
+        "value": 1250
+    },
+    {
+        "id": 2,
+        "title": "Parcel Delivered",
+        "value": 1025
+    },
+    {
+        "id": 3,
+        "title": "People Using Our webSite",
+        "value": 5678
+    }
+]
