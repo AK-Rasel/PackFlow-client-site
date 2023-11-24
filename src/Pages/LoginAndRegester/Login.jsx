@@ -42,10 +42,10 @@ const Login = () => {
             })
     }
     return (
-        <div>
-            <>
+        <div className="h-screen flex items-center">
+            
                 {/* Hero */}
-                <div className="relative overflow-hidden">
+                <div className="container m-auto   relative overflow-hidden">
                     <div className="mx-auto max-w-screen-md py-12 px-4 sm:px-6 md:max-w-screen-xl md:py-20 lg:py-32 md:px-8">
                         <div className="md:pe-8 md:w-1/2 xl:pe-0 xl:w-5/12">
                             <div className="text-center">
@@ -155,7 +155,7 @@ const Login = () => {
                     {/* End Col */}
                 </div>
                 {/* End Hero */}
-            </>
+            
 
         </div>
     );

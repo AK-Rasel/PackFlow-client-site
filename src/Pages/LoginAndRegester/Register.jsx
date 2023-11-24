@@ -9,37 +9,56 @@ const imgHostingKey = import.meta.env.VITE_Image_Hosting_KEY;
 const imgHosting_api = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
 const Register = () => {
     const axiosOpen = useAxiosOpen()
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const { googleLogin,createUserEmailAndPassword,updateUser } = useAuth()
+
+    const { googleLogin, createUserEmailAndPassword, updateUser } = useAuth()
+
     const navigate = useNavigate()
 
-    const onSubmit = async(data) => {
-        console.log(data.email,data.password,data)
-        const imageFile = {image: data.userImg[0]}
-        const res = await axiosOpen.post(imgHosting_api,imageFile,{
+    const onSubmit = async (data) => {
+        console.log(data.email, data.password, data.roll)
+        const imageFile = { image: data.userImg[0] }
+        const res = await axiosOpen.post(imgHosting_api, imageFile, {
             headers: {
                 "Content-Type": "multipart/form-data",
-              },
+            },
         });
         console.log(res.data)
-        createUserEmailAndPassword(data.email,data.password)
-        .then(result => {
-            const loginUser = result.user
-            console.log(loginUser)
-            updateUser(data.name,res.data.data.display_url)
-            toast.success('Login success')
+        createUserEmailAndPassword(data.email, data.password)
+            .then(() => {
+                updateUser(data.name, res.data.data.display_url)
+                // const loginUser = result.user
+                // console.log(loginUser)
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    image: res.data.data.display_url,
+                    roll:data.roll
+                }
+                axiosOpen.post("/users", userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user add data base')
+                            navigate("/");
+                            toast.success("Register Successes Fully");
+                        }
+                    })
 
-            navigate('/')
-        })
+
+
+
+
+            })
     }
 
 
 
-// google
+    // google
     const googleHandle = () => {
         googleLogin()
             .then(result => {
@@ -52,10 +71,10 @@ const Register = () => {
             })
     }
     return (
-        <div>
-            <>
+        <div className="h-screen flex items-center">
+            
                 {/* Hero */}
-                <div className="relative overflow-hidden">
+                <div className="container m-auto relative overflow-hidden">
                     <div className="mx-auto max-w-screen-md py-12 px-4 sm:px-6 md:max-w-screen-xl md:py-20 lg:py-32 md:px-8">
                         <div className="md:pe-8 md:w-1/2 xl:pe-0 xl:w-5/12">
                             <div className="text-center">
@@ -188,7 +207,7 @@ const Register = () => {
                                     <label className="block">
                                         <span className="sr-only">Choose profile photo</span>
                                         <input
-                                        {...register('userImg',{required: true})}
+                                            {...register('userImg', { required: true })}
                                             type="file"
                                             className="block w-full text-sm text-gray-500 file:me-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold
 file:bg-blue-600 file:text-white
@@ -200,6 +219,16 @@ dark:hover:file:bg-blue-400
                                     </label>
                                     {errors.userImg && <span>This is required</span>}
                                 </div>
+                                {/* radio */}
+                                <select {...register('roll', { required: true })} className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
+                                    <option selected="">select type</option>
+                                    <option>User</option>
+                                    <option>DeliveryMen</option>
+                                    <option>Admin</option>
+                                </select>
+
+
+                                {/* radio */}
                                 <div className="grid">
                                     <button
                                         type="submit"
@@ -217,7 +246,7 @@ dark:hover:file:bg-blue-400
                     {/* End Col */}
                 </div>
                 {/* End Hero */}
-            </>
+            
 
         </div>
     );
