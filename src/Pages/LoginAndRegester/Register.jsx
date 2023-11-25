@@ -221,7 +221,7 @@ file:bg-[#F5AB35] file:text-white
                                     <option selected="">select type</option>
                                     <option>User</option>
                                     <option>DeliveryMen</option>
-                                    <option>Admin</option>
+                                    
                                 </select>
 
 

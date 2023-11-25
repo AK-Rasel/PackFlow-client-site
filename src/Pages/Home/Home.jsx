@@ -1,5 +1,6 @@
 import Banner from "./HomeComponets/Banner";
 import OurFeatures from "./HomeComponets/OurFeatures";
+import TopDeliveryMan from "./HomeComponets/TopDeliveryMan";
 import WhyShipEase from "./HomeComponets/WhyShipEase";
 
 
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner/>
             <OurFeatures/>
             <WhyShipEase/>
+            <TopDeliveryMan/>
         </div>
     );
 };

@@ -15,6 +15,8 @@ const OurFeatures = () => {
 
             {/* Card Section */}
             <div className="max-w-[85rem] w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                {/* title */}
+                <h1 className="text-center uppercase font-extrabold text-4xl my-10">Our Features </h1>
                 {/* Grid */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                     {/* Card */}
