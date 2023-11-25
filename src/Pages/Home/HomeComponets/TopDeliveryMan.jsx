@@ -7,6 +7,8 @@ const TopDeliveryMan = () => {
 
     return (
         <div className="max-w-[85rem] mx-auto justify-center px-5 mb-12">
+            {/* title */}
+            <h1 className="text-center uppercase font-extrabold text-4xl my-10">Top Delivery Man </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     topDeliverymans?.map(topDeliveryman => <div data-aos="fade-up" key={topDeliveryman._id} className="card w-full bg-base-100 shadow-xl">
