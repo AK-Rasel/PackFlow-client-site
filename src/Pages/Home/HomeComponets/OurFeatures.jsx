@@ -19,7 +19,7 @@ const OurFeatures = () => {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                     {/* Card */}
                     {
-                        features?.map(feature => <div key={feature.index}
+                        features?.map(feature => <div data-aos="fade-up" key={feature.index}
                             className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
 
                         >

@@ -84,12 +84,12 @@ const Register = () => {
                                 </h1>
 
                                 <p className="mt-2 text-sm ">
-                                    Already have an account?
+                                    Already have an account? 
                                     <Link
-                                        className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 "
+                                        className="text-[#F5AB35] decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 "
                                         to={'/login'}
                                     >
-                                        Login
+                                         Login
                                     </Link>
                                 </p>
                                 {/* End Title */}
@@ -210,11 +210,8 @@ const Register = () => {
                                             {...register('userImg', { required: true })}
                                             type="file"
                                             className="block w-full text-sm text-gray-500 file:me-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold
-file:bg-blue-600 file:text-white
-hover:file:bg-blue-700
-file:disabled:opacity-50 file:disabled:pointer-events-none
-dark:file:bg-blue-500
-dark:hover:file:bg-blue-400
+file:bg-[#F5AB35] file:text-white
+
 "/>
                                     </label>
                                     {errors.userImg && <span>This is required</span>}
@@ -232,7 +229,7 @@ dark:hover:file:bg-blue-400
                                 <div className="grid">
                                     <button
                                         type="submit"
-                                        className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 "
+                                        className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#F5AB35] text-white  "
                                     >
                                         Register
                                     </button>
