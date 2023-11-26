@@ -4,18 +4,18 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../Hook/useAuth';
 
 const NavbarDashboard = () => {
-    const { user, logOut } = useAuth()
-    const navigate = useNavigate()
-    const logoutHandel = () => {
-        logOut()
-            .then(() => {
-                navigate("/login")
+    // const { user, logOut } = useAuth()
+    // const navigate = useNavigate()
+    // const logoutHandel = () => {
+    //     logOut()
+    //         .then(() => {
+    //             navigate("/login")
 
-            })
-            .catch(error => console.error(error))
-    }
+    //         })
+    //         .catch(error => console.error(error))
+    // }
 
-    const isdeliveryMan = true
+    const isdeliveryMan = false
     // const isuser = false
     const isAdmin = false
 
@@ -25,30 +25,46 @@ const NavbarDashboard = () => {
             isAdmin ?
                 <div>
                     <li className="font-semibold text-lg"><NavLink
-                        to="/"
-                        className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
-                        }
-                    >
-                        Home
-                    </NavLink></li>
-                    <div className="divider m-0"></div>
-                    <li className="font-semibold text-lg"><NavLink
                         to="/dashboard"
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                         }
                     >
-                        AdminDashboard
+                        Dashboard
                     </NavLink></li>
-                    <div className="divider m-0"></div>
+                   
                     <li className="font-semibold text-lg"><NavLink
                         to="/"
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                         }
                     >
-                        <FaBell />
+                       All Parcels
+                    </NavLink></li>
+                   
+                    <li className="font-semibold text-lg"><NavLink
+                        to="/"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                        }
+                    >
+                        All Users
+                    </NavLink></li>
+                    <li className="font-semibold text-lg"><NavLink
+                        to="/"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                        }
+                    >
+                       All Delivery Men
+                    </NavLink></li>
+                    <li className="font-semibold text-lg"><NavLink
+                        to="/"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                        }
+                    >
+                       Statistics
                     </NavLink></li>
                 </div> : isdeliveryMan ?
                     <div>
@@ -60,23 +76,31 @@ const NavbarDashboard = () => {
                         >
                             Home
                         </NavLink></li>
-                        <div className="divider m-0"></div>
+                       
                         <li className="font-semibold text-lg"><NavLink
                             to="/dashboard"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                             }
                         >
-                            deliverManDashboard
+                            Dashboard
                         </NavLink></li>
-                        <div className="divider m-0"></div>
                         <li className="font-semibold text-lg"><NavLink
                             to="/"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                             }
                         >
-                            <FaBell />
+                            My Delivery List
+                        </NavLink></li>
+                       
+                        <li className="font-semibold text-lg"><NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                            }
+                        >
+                           My Reviews
                         </NavLink></li>
                     </div>
                     :
@@ -89,23 +113,39 @@ const NavbarDashboard = () => {
                         >
                             Home
                         </NavLink></li>
-                        <div className="divider m-0"></div>
+                       
                         <li className="font-semibold text-lg"><NavLink
                             to="/dashboard"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                             }
                         >
-                            userDashboard
+                            Dashboard
                         </NavLink></li>
-                        <div className="divider m-0"></div>
+                       
                         <li className="font-semibold text-lg"><NavLink
                             to="/"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
                             }
                         >
-                            <FaBell />
+                            My Profile
+                        </NavLink></li>
+                        <li className="font-semibold text-lg"><NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                            }
+                        >
+                            My Parcels
+                        </NavLink></li>
+                        <li className="font-semibold text-lg"><NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+                            }
+                        >
+                           Book a Parcel
                         </NavLink></li>
                     </div>
         }
@@ -122,7 +162,7 @@ const NavbarDashboard = () => {
                         <label tabIndex={0} className="btn hover:bg-transparent hover:text-[#F5AB35] btn-ghost   lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="   menu  menu-sm dropdown-content mt-3 z-10 p-4 shadow bg-base-100 rounded-box w-52 ">
+                        <ul tabIndex={0} className="   menu  menu-sm dropdown-content mt-3 z-10 p-4 shadow bg-base-100 rounded-box w-52 h-screen ">
 
                             {NavBarLink}
 
