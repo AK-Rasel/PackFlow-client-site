@@ -12,7 +12,7 @@ const Update = () => {
     const updateBook = useLoaderData()
     const { user } = useAuth()
     
-    console.log(updateBook)
+    // console.log(updateBook)
     const axiosSecure= useAxiosSecure()
     const {
         register,

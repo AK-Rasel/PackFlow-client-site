@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
         {
         path:'myProfile',
-        element:<UserProfile/>
+        element:<PrivetRouter><UserProfile/></PrivetRouter>
       },
         {
         path:'bookParcel',
