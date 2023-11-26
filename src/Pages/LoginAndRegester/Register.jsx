@@ -1,5 +1,5 @@
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hook/useAuth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -8,7 +8,10 @@ import useAxiosOpen from '../../Hook/useAxiosOpen';
 const imgHostingKey = import.meta.env.VITE_Image_Hosting_KEY;
 const imgHosting_api = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
 const Register = () => {
+
+
     const axiosOpen = useAxiosOpen()
+    
 
     const {
         register,
@@ -19,6 +22,8 @@ const Register = () => {
     const { googleLogin, createUserEmailAndPassword, updateUser } = useAuth()
 
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
     const onSubmit = async (data) => {
         console.log(data.email, data.password, data.roll)
@@ -44,15 +49,10 @@ const Register = () => {
                     .then(res => {
                         if (res.data.insertedId) {
                             console.log('user add data base')
-                            navigate("/");
+                            navigate(from,{replace:true})
                             toast.success("Register Successes Fully");
                         }
                     })
-
-
-
-
-
             })
     }
 
@@ -60,11 +60,12 @@ const Register = () => {
 
     // google
     const googleHandle = () => {
+
         googleLogin()
             .then(result => {
                 console.log(result)
                 toast.success('Login success')
-                navigate('/')
+                navigate(from,{replace:true})
             })
             .catch(error => {
                 console.error(error);

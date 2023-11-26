@@ -15,8 +15,9 @@ import BookParcel from "../Dashboard/User/BookParcel";
 import DeliveryManHome from "../Dashboard/deliveryMan/DeliveryManHome";
 import DeliveryList from "../Dashboard/deliveryMan/DeliveryList";
 import Reviews from "../Dashboard/deliveryMan/Reviews";
-import UserRoute from "../Provider/PrivetRouter";
+// import UserRoute from "../Provider/PrivetRouter";
 import PrivetRouter from "../Provider/PrivetRouter";
+import Update from "../Dashboard/User/Update";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
         {
         path:'bookParcel',
         element: <PrivetRouter><BookParcel/></PrivetRouter>
+      },
+        {
+        path:'update/:id',
+        element: <Update/>,
+        loader:({params}) => fetch(`http://localhost:5000/parcelBook/${params.id}`)
+
       },
       // Delivery Men
       {

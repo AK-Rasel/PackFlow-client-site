@@ -1,12 +1,19 @@
+import { Link } from "react-router-dom";
+import useBookParcel from "../../Hook/useBookParcel";
 
 
 
 
 const MyBookParcel = () => {
+    const [bookParcel] = useBookParcel()
+    console.log(bookParcel)
+    // const updateHandle = e =>{
+
+    // }
     return (
         <div className="lg:min-h-screen">
             <div className="text-center font-extrabold text-5xl my-8">
-                <h1>Your Book : </h1>
+                <h1>Your Book : {bookParcel.length}</h1>
             </div>
             <div className="overflow-x-auto">
                 <table className="table  table-lg font-medium">
@@ -24,19 +31,23 @@ const MyBookParcel = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
+                        {
+                            bookParcel?.map((myBookParcel,index) => 
+                            <tr key={myBookParcel._id}>
+                            <th>{index + 1}</th>
+                            <td>{myBookParcel.type}</td>
+                            <td>{myBookParcel.requestedDeliveryDate}</td>
                             <td>Littel, Schaden and Vandervort</td>
-                            <td>Canada</td>
-                            <td>12/16/2020</td>
-                            <td>Blue</td>
+                            <td>{myBookParcel.requestedDeliveryDate}</td>
+                            <td>Delivery Men ID</td>
+                            <td>{myBookParcel.status}</td>
                             <td>
                                 <button className="btn hover:bg-[#F5AB35] text-[#222427] mr-4">Cancel</button>
-                                <button className="btn">Update</button>
+                                <Link to={`/dashboard/update/${myBookParcel._id}`}><button  className="btn">Update</button></Link>
                             </td>
                         </tr>
+                            )
+                        }
 
 
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -14,15 +14,16 @@ const Login = () => {
     } = useForm()
     const { googleLogin,loginEmailWithPassword } = useAuth()
     const navigate = useNavigate()
+    const location = useLocation()
     const [errorSee,setErrorSee] = useState()
-
+const from = location.state?.from?.pathname || '/'
     const onSubmit = data => {
         console.log(data.email,data.password)
         loginEmailWithPassword(data.email,data.password)
         .then(result => {
             const loginUser = result.user
             console.log(loginUser)
-            navigate('/')
+            navigate(from,{replace:true})
             toast.success('Login success')
         })
         .catch(error => {
@@ -34,7 +35,7 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 console.log(result)
-                navigate('/')
+                navigate(from,{replace:true})
             toast.success('Login success')
             })
             .catch(error => {
