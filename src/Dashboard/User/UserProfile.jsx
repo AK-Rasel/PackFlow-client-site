@@ -1,13 +1,34 @@
 // import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+
 // import useAxiosSecure from "../../Hook/useAxiosSecure";
 // import useUserData from "../../Hook/useUserData";
 // import { useQuery } from "@tanstack/react-query";
-
+const imgHostingKey = import.meta.env.VITE_Image_Hosting_KEY;
+const imgHosting_api = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
 
 const UserProfile = () => {
-    const { user } = useAuth()
-    console.log(user)
+    const { user,updateUser } = useAuth()
+    // console.log(user)
+const axiosSecure = useAxiosSecure()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = async(data) => {
+        const imageFile = { image: data.image[0] }
+        const res = await axiosSecure.post(imgHosting_api, imageFile, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        console.log(res.data)
+        updateUser(user.displayName,res.data.data.display_url)
+        // console.log(data)
+    }
     //     const axiosSecure= useAxiosSecure()
 
     //    const {data} = useQuery({
@@ -45,8 +66,8 @@ const UserProfile = () => {
                     <div>
                         <h1 className="text-5xl font-bold">{user.displayName}</h1>
                         <p className="py-6">{user.email}</p>
-                        <form>
-                            <input type="file" className="file-input  w-full max-w-xs" />
+                        <form  onSubmit={handleSubmit(onSubmit)}>
+                            <input {...register("image", { required: true })} type="file" className="file-input  w-full max-w-xs" />
                             <button className="btn hover:bg-[#232323] mt-2 bg-[#F5AB35] text-white">Image Update</button>
                         </form>
                     </div>

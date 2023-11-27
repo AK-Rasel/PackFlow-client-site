@@ -16,7 +16,7 @@ const MyBookParcel = () => {
                 <h1>Your Book : {bookParcel.length}</h1>
             </div>
             <div className="overflow-x-auto">
-                <table className="table  table-lg font-medium">
+                <table className="table -z-10 table-xs table-pin-rows table-pin-cols">
                     <thead>
                         <tr className="text-sm bg-[#F5AB35] text-[#222427]">
                             <th>#</th>
@@ -42,28 +42,12 @@ const MyBookParcel = () => {
                             <td>Delivery Men ID</td>
                             <td>{myBookParcel.status}</td>
                             <td>
-                                <button className="btn hover:bg-[#F5AB35] text-[#222427] mr-4">Cancel</button>
-                                <Link to={`/dashboard/update/${myBookParcel._id}`}><button  className="btn">Update</button></Link>
+                                <button disabled={myBookParcel.status !== 'pending'} className="btn hover:bg-[#F5AB35] text-[#222427] mr-4">Cancel</button>
+                                <Link  to={`/dashboard/update/${myBookParcel._id}`}><button disabled={myBookParcel.status !== 'pending'} className="btn">Update</button></Link>
                             </td>
                         </tr>
                             )
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     </tbody>

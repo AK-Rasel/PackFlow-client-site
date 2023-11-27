@@ -18,6 +18,8 @@ import Reviews from "../Dashboard/deliveryMan/Reviews";
 // import UserRoute from "../Provider/PrivetRouter";
 import PrivetRouter from "../Provider/PrivetRouter";
 import Update from "../Dashboard/User/Update";
+import AllParcels from "../Dashboard/Admin/AllParcels";
+import AllUser from "../Dashboard/Admin/AllUser";
 
 const router = createBrowserRouter([
     {
@@ -77,10 +79,14 @@ const router = createBrowserRouter([
         element:<Reviews/>
       },
       // Admin
-      {
-        path:'myReviews',
-        element:<Reviews/>
-      },
+      // {
+      //   path:'allParcels',
+      //   element:<AllParcels/>
+      // },
+      // {
+      //   path:'allUsers',
+      //   element:<AllUser/>
+      // },
 
     ]
     },

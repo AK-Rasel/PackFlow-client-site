@@ -4,14 +4,14 @@ import useAuth from "../../Hook/useAuth";
 // import { useState } from "react";
 // import useAxiosOpen from "../../Hook/useAxiosOpen";
 
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const Update = () => {
     const updateBook = useLoaderData()
     const { user } = useAuth()
-    
+    const navigate= useNavigate()
     // console.log(updateBook)
     const axiosSecure= useAxiosSecure()
     const {
@@ -28,6 +28,7 @@ const Update = () => {
         const res = await axiosSecure.put(`/parcelBook/${updateBook._id}`,data)
         if (res.data.modifiedCount) {
             reset()
+            navigate('/dashboard/myParcel')
             Swal.fire({
                 position: "top-end",
                 icon: "success",
