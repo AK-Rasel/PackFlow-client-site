@@ -1,10 +1,15 @@
 import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAdmin from "../Hook/useAdmin";
+import useDeliveryMen from "../Hook/useDeliveryMen";
 
 
 const SideBar = ({ children }) => {
     const isdeliveryMan = false
-    const isAdmin = false
+    const [isAdmin] = useAdmin()
+
+
+    
     return (
         <div>
             <div className="drawer lg:drawer-open">
