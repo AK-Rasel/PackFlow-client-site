@@ -83,10 +83,10 @@ const router = createBrowserRouter([
       //   path:'allParcels',
       //   element:<AllParcels/>
       // },
-      // {
-      //   path:'allUsers',
-      //   element:<AllUser/>
-      // },
+      {
+        path:'allUsers',
+        element:<AllUser/>
+      },
 
     ]
     },
