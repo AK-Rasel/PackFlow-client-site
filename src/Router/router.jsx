@@ -20,6 +20,7 @@ import PrivetRouter from "../Provider/PrivetRouter";
 import Update from "../Dashboard/User/Update";
 import AllParcels from "../Dashboard/Admin/AllParcels";
 import AllUser from "../Dashboard/Admin/AllUser";
+import AllDeliveryMen from "../Dashboard/Admin/AllDeliveryMen";
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path:'allUsers',
         element:<AllUser/>
+      },
+      {
+        path:'allDeliveryMen',
+        element:<AllDeliveryMen/>
       },
 
     ]

@@ -64,8 +64,19 @@ const Register = () => {
         googleLogin()
             .then(result => {
                 console.log(result)
-                toast.success('Login success')
-                navigate(from,{replace:true})
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosOpen.post("/users", userInfo)
+                .then(res => {
+                    console.log(res.data)
+                    // navigate(from,{replace:true})
+                    navigate('/')
+                })
+
+                // toast.success('Login success')
+                
             })
             .catch(error => {
                 console.error(error);

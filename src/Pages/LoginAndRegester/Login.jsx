@@ -4,9 +4,11 @@ import useAuth from "../../Hook/useAuth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useAxiosOpen from "../../Hook/useAxiosOpen";
 
 
 const Login = () => {
+    const axiosOpen = useAxiosOpen()
     const {
         register,
         handleSubmit,
@@ -34,6 +36,16 @@ const from = location.state?.from?.pathname || '/'
     const googleHandle = () => {
         googleLogin()
             .then(result => {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosOpen.post("/users", userInfo)
+                .then(res => {
+                    console.log(res.data,'user login add')
+                    // navigate(from,{replace:true})
+                    navigate('/')
+                })
                 console.log(result)
                 navigate(from,{replace:true})
             toast.success('Login success')
