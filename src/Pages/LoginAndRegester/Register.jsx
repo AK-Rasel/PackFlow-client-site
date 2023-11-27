@@ -26,7 +26,7 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/'
 
     const onSubmit = async (data) => {
-        console.log(data.email, data.password, data.roll)
+        console.log(data.email, data.password, data.role)
         const imageFile = { image: data.userImg[0] }
         const res = await axiosOpen.post(imgHosting_api, imageFile, {
             headers: {
@@ -43,7 +43,7 @@ const Register = () => {
                     name: data.name,
                     email: data.email,
                     image: res.data.data.display_url,
-                    roll:data.roll
+                    role:data.role
                 }
                 axiosOpen.post("/users", userInfo)
                     .then(res => {
@@ -229,7 +229,7 @@ file:bg-[#F5AB35] file:text-white
                                     {errors.userImg && <span>This is required</span>}
                                 </div>
                                 {/* radio */}
-                                <select {...register('roll', { required: true })} className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
+                                <select {...register('role', { required: true })} className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
                                     <option selected="">select type</option>
                                     <option>User</option>
                                     <option>DeliveryMen</option>

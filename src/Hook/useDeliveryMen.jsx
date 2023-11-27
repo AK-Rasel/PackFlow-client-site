@@ -9,10 +9,12 @@ import useAxiosSecure from "./useAxiosSecure";
 
 
 const useDeliveryMen = () => {
-    const {user} = useAuth()
+
+    const {user,loading} = useAuth()
     const  axiosSecure = useAxiosSecure()
     const {data:isDeliveryMen} = useQuery({
         queryKey : [user?.email,'deliveryMen'],
+        enabled: !loading,
         queryFn: async()=> {
             const res = await axiosSecure.get(`/users/deliveryMen/${user.email}`);
             console.log(res.data)
