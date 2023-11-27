@@ -79,10 +79,10 @@ const router = createBrowserRouter([
         element:<Reviews/>
       },
       // Admin
-      // {
-      //   path:'allParcels',
-      //   element:<AllParcels/>
-      // },
+      {
+        path:'allParcels',
+        element:<AllParcels/>
+      },
       {
         path:'allUsers',
         element:<AllUser/>
