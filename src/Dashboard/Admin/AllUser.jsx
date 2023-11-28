@@ -1,18 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure()
+    const [page, setPage] = useState(0)
     const { data: allUsers = [], refetch } = useQuery({
-        queryKey: ['allUsers'],
+        queryKey: ['allUsers', page],
         queryFn: async () => {
-            const res = await axiosSecure.get('/allUsers')
+            const res = await axiosSecure.get(`/allUsers?page=${page}`)
             return res.data
         }
     })
-   
+
     const makeAdminHandle = allUser => {
         console.log(allUser._id)
         axiosSecure.patch(`/users/admin/${allUser._id}`)
@@ -75,13 +77,13 @@ const AllUser = () => {
 
 
                                 <th>
-                                    {allUser.role === 'deliveryMen'?'Delivery Men':<button
+                                    {allUser.role === 'deliveryMen' ? 'Delivery Men' : <button
                                         onClick={() => makeDeliveryMan(allUser)}
                                         disabled={allUser.role === 'admin'} className="btn">Delivery Men</button>}
                                 </th>
                                 <th>
                                     {allUser.role === 'admin' ? 'Admin' : <button
-                                    disabled ={allUser.role === 'deliveryMen'}
+                                        disabled={allUser.role === 'deliveryMen'}
                                         onClick={() => makeAdminHandle(allUser)}
                                         className="btn">Admin</button>}
                                 </th>
@@ -95,6 +97,10 @@ const AllUser = () => {
                     </tbody>
 
                 </table>
+                <div className="join ">
+                    <button onClick={() => setPage(page -1)} className="join-item btn btn-outline">Previous page</button>
+                    <button onClick={() => setPage(page +1)} className="join-item btn btn-outline">Next</button>
+                </div>
             </div>
 
         </div>
