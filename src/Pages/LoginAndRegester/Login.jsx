@@ -8,6 +8,7 @@ import useAxiosOpen from "../../Hook/useAxiosOpen";
 
 
 const Login = () => {
+    const [errorsee,setErrorSee] =useState()
     const axiosOpen = useAxiosOpen()
     const {
         register,
@@ -17,7 +18,7 @@ const Login = () => {
     const { googleLogin,loginEmailWithPassword } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    const [errorSee,setErrorSee] = useState()
+    
 const from = location.state?.from?.pathname || '/'
     const onSubmit = data => {
         console.log(data.email,data.password)
@@ -34,24 +35,26 @@ const from = location.state?.from?.pathname || '/'
     }
 
     const googleHandle = () => {
+
         googleLogin()
             .then(result => {
+                console.log(result)
                 const userInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName
                 }
                 axiosOpen.post("/users", userInfo)
                 .then(res => {
-                    console.log(res.data,'user login add')
+                    console.log(res.data)
                     // navigate(from,{replace:true})
                     navigate('/')
                 })
-                console.log(result)
-                navigate(from,{replace:true})
-            toast.success('Login success')
+
+                // toast.success('Login success')
+                
             })
             .catch(error => {
-                toast.error(error.message)
+                console.error(error);
             })
     }
     return (
@@ -149,7 +152,7 @@ const from = location.state?.from?.pathname || '/'
                                     />
                                     {errors.password && <span className="text-red-500 text-sm">*Password is required</span>}
                                 </div>
-                                <p>{errorSee}</p>
+                                <p>{errorsee}</p>
                                 <div className="grid">
                                     <button
                                         type="submit"

@@ -32,7 +32,7 @@ const AllUser = () => {
     }
     // deliverymen
     const makeDeliveryMan = (allUser) => {
-        axiosSecure.patch(`/users/deliveryMan/${allUser._id}`)
+        axiosSecure.patch(`/users/deliveryMen/${allUser._id}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
@@ -75,13 +75,13 @@ const AllUser = () => {
 
 
                                 <th>
-                                    {allUser.role === 'deliveryMan'?'Delivery Men':<button
+                                    {allUser.role === 'deliveryMen'?'Delivery Men':<button
                                         onClick={() => makeDeliveryMan(allUser)}
                                         disabled={allUser.role === 'admin'} className="btn">Delivery Men</button>}
                                 </th>
                                 <th>
                                     {allUser.role === 'admin' ? 'Admin' : <button
-                                    disabled ={allUser.role === 'deliveryMan'}
+                                    disabled ={allUser.role === 'deliveryMen'}
                                         onClick={() => makeAdminHandle(allUser)}
                                         className="btn">Admin</button>}
                                 </th>
