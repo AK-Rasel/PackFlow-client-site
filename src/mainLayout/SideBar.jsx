@@ -2,13 +2,14 @@ import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAdmin from "../Hook/useAdmin";
 import useDeliveryMen from "../Hook/useDeliveryMen";
-import useAuth from "../Hook/useAuth";
+// import useAuth from "../Hook/useAuth";
+import useUserSideBer from "../Hook/useUserSideBer";
 
 
 const SideBar = ({ children }) => {
     const [isdeliveryMan] = useDeliveryMen()
     const [isAdmin] = useAdmin()
-    const { user } = useAuth()
+    // const [isUser] = useUserSideBer()
 
 
 
@@ -32,7 +33,7 @@ const SideBar = ({ children }) => {
                     <li><a>Sidebar Item 2</a></li> */}
 
                         {
-                            isAdmin &&
+                            isAdmin ?
                             <div>
                                 <Link to={'/'} className="w-full flex justify-center font-bold   normal-case text-3xl text-white">Pack<span className="text-[#F5AB35]">Flow</span> </Link>
                                 <div className="divider divider-warning"></div>
@@ -52,10 +53,10 @@ const SideBar = ({ children }) => {
                                 <li><Link to={'/dashboard/statistics'} className="btn btn-ghost text-white text-xl w-full ">
                                     <button>Statistics</button>
                                 </Link></li>
-                            </div>}
+                            </div> :
 
-                        {isdeliveryMan
-                            &&
+                        isdeliveryMan ?
+                            
 
                             <div>
 
@@ -76,9 +77,9 @@ const SideBar = ({ children }) => {
                                     <button>My Reviews</button>
                                 </Link></li>
 
-                            </div>}
+                            </div>:
 
-                        {user && <div>
+                         <div>
                             <Link to={'/'} className="w-full flex justify-center font-bold   normal-case text-3xl text-white">Pack<span className="text-[#F5AB35]">Flow</span> </Link>
                             <div className="divider divider-warning"></div>
                             <li><Link to={'/dashboard/userHome'} className="btn btn-ghost text-white text-xl w-full ">

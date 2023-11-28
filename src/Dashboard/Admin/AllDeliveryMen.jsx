@@ -7,7 +7,7 @@ const AllDeliveryMen = () => {
     return (
         <div className="lg:min-h-screen">
             <div className="text-center font-extrabold text-5xl my-8">
-                <h1>All Delivery Men : 0</h1>
+                <h1>All Delivery Men :</h1>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-xs table-pin-rows table-pin-cols">

@@ -24,7 +24,7 @@ const MyBookParcel = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Cancel!"
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.patch(`/parcelBook/cancel/${myBookParcel._id}`)

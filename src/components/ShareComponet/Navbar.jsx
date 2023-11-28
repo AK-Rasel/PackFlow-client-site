@@ -7,8 +7,12 @@ AOS.init();
 import { FaBell } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import useDeliveryMen from '../../Hook/useDeliveryMen';
+import useAdmin from '../../Hook/useAdmin';
 
 const Navbar = () => {
+    const [isdeliveryMan] = useDeliveryMen()
+    const [isAdmin] = useAdmin()
     const { user, logOut } = useAuth()
     const navigate = useNavigate()
     const logoutHandel = () => {
@@ -31,14 +35,31 @@ const Navbar = () => {
             Home
         </NavLink></li>
         <div className="divider m-0"></div> 
-        <li className="font-semibold text-lg"><NavLink
-            to="/dashboard"
+        
+        {
+            isAdmin ? <li className="font-semibold text-lg"><NavLink
+            to="/dashboard/statistics"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+            }
+        >
+            Dashboard
+        </NavLink></li> : isdeliveryMan ? <li className="font-semibold text-lg"><NavLink
+            to="/dashboard/myDeliveryList"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
+            }
+        >
+            Dashboard
+        </NavLink></li>:<li className="font-semibold text-lg"><NavLink
+            to="/dashboard/myParcel"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
             }
         >
             Dashboard
         </NavLink></li>
+        }
         <div className="divider m-0"></div> 
         <li className="font-semibold text-lg"><NavLink
             to="/"

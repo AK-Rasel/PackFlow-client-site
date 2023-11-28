@@ -229,10 +229,10 @@ file:bg-[#F5AB35] file:text-white
                                     {errors.userImg && <span>This is required</span>}
                                 </div>
                                 {/* radio */}
-                                <select {...register('role', { required: true })} className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
-                                    <option selected="">select type</option>
-                                    <option>User</option>
-                                    <option>DeliveryMen</option>
+                                <select {...register('role')} className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
+                                    <option selected=""></option>
+                                    <option>user</option>
+                                    <option>deliveryMen</option>
                                     
                                 </select>
 
