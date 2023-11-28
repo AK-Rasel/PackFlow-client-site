@@ -34,7 +34,9 @@ const BookParcel = () => {
     }
     const onSubmit = async(data) => {
         console.log(data.type)
-        const bookingParcelWeight ={...data,parcelWeight ,price:price ,status : "pending"}
+        // auto date count
+        const orderDate = new Date().toISOString().slice(0,10);
+        const bookingParcelWeight ={...data,parcelWeight ,price:price ,status : "pending",orderDate}
         console.log(bookingParcelWeight)
         const res = await axiosSecure.post('/parcelBook',bookingParcelWeight)
         if (res.data.insertedId) {

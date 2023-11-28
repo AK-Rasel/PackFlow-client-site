@@ -44,14 +44,23 @@ const Navbar = () => {
             }
         >
             Dashboard
-        </NavLink></li> : isdeliveryMan ? <li className="font-semibold text-lg"><NavLink
+        </NavLink></li> : 
+        isdeliveryMan 
+        
+        ? 
+
+        <li className="font-semibold text-lg"><NavLink
             to="/dashboard/myDeliveryList"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
             }
         >
             Dashboard
-        </NavLink></li>:<li className="font-semibold text-lg"><NavLink
+        </NavLink></li>
+        
+        : 
+        
+        <li className="font-semibold text-lg"><NavLink
             to="/dashboard/myParcel"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-[#F5AB35] underline link link-hover" : ""
