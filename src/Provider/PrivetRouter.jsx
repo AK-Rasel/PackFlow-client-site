@@ -6,7 +6,7 @@ const PrivetRouter = ({children}) => {
     const {user,loading} = useAuth()
     const location = useLocation()
     if (loading ) {
-        return <progress className="progress w-56"></progress>
+        return <div className="skeleton w-32 h-32"></div>
     }
     if (user) {
         return children
