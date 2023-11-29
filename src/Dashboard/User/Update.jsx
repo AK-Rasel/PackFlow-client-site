@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
@@ -14,7 +15,7 @@ const Update = () => {
     const { user } = useAuth()
     const navigate = useNavigate()
     const [parcelWeight,setParcelWeight] = useState(0)
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState(updateBook.price || 0)
     const axiosSecure = useAxiosSecure()
     const {
         register,
@@ -44,7 +45,7 @@ const Update = () => {
             reset()
             navigate('/dashboard/myParcel')
             Swal.fire({
-                position: "top-end",
+                position: "center",
                 icon: "success",
                 title: "update",
                 showConfirmButton: false,
@@ -196,7 +197,12 @@ const Update = () => {
                                 <span className="label-text text-white">Price</span>
 
                             </label>
-                            <input type="number" {...register("price", { required: true })} defaultValue={updateBook.price} value={price} placeholder="Price" className="input input-bordered w-full max-w-xs" />
+                            <input 
+                            type="number" {...register("price", { required: true })} 
+                            onChange={(e) => setPrice(e.target.value)}
+                            value={price}
+                             placeholder="Price" 
+                            className="input input-bordered w-full max-w-xs" />
                             {errors.price?.type === "required" && (
                                 <p className="text-[#F5AB35]">this is required</p>
                             )}

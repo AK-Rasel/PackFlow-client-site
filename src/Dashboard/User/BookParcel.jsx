@@ -6,10 +6,12 @@ import { useState } from "react";
 // import useAxiosOpen from "../../Hook/useAxiosOpen";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
 const BookParcel = () => {
+    const  navigate = useNavigate()
     const { user } = useAuth()
     const [parcelWeight,setParcelWeight] = useState(0)
     const [price, setPrice] = useState(0)
@@ -42,12 +44,13 @@ const BookParcel = () => {
         if (res.data.insertedId) {
             reset()
             Swal.fire({
-                position: "top-end",
+                position: "center",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Your parcel has been booked",
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/dashboard/myParcel')
         }
 
     }
@@ -80,8 +83,10 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Phone</span>
 
                             </label>
-                            <input type="number" placeholder="Phone Number" {...register("phoneNumber")} className="input input-bordered w-full max-w-xs" />
-
+                            <input type="number" placeholder="Phone Number" {...register("phoneNumber",{ required: true})} className="input input-bordered w-full max-w-xs" />
+                            {errors.type && <span className="text-[#F5AB35]">This is required</span>}
+                            
+                            
                         </div>
                     </div>
                     {/* second */}
@@ -94,7 +99,7 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Parcel Weight</span>
 
                             </label>
-                            <input type="number" placeholder="Parcel Weight" name="weight" onChange={weightEven}  className="input input-bordered w-full max-w-xs" />
+                            <input type="number" placeholder="Parcel Weight" required name="weight" onChange={weightEven}  className="input input-bordered w-full max-w-xs" />
 
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -102,16 +107,17 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Parcel Type</span>
 
                             </label>
-                            <input type="text" placeholder="Parcel Type" {...register("type")} className="input input-bordered w-full max-w-xs" />
-
+                            <input type="text" placeholder="Parcel Type" {...register("type",{ required: true })} className="input input-bordered w-full max-w-xs" />
+                            {errors.type && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text text-white">Receiver Name</span>
 
                             </label>
-                            <input type="text" placeholder="Receiver Name" {...register("receiversName")} className="input input-bordered w-full max-w-xs" />
-
+                            {/* start */}
+                            <input type="text" placeholder="Receiver Name" {...register("receiversName",{ required: true })} className="input input-bordered w-full max-w-xs" />
+{errors.receiversName && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                     </div>
                     {/* 3th */}
@@ -121,8 +127,8 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Receiver's Phone Number</span>
 
                             </label>
-                            <input type="number" placeholder="Receiver's Phone Number" {...register("receiverPhoneNumber")} className="input input-bordered w-full max-w-xs" />
-
+                            <input type="number" placeholder="Receiver's Phone Number" {...register("receiverPhoneNumber",{ required: true })} className="input input-bordered w-full max-w-xs" />
+                            {errors.receiverPhoneNumber && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
 
 
@@ -131,16 +137,16 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Parcel Delivery Address</span>
 
                             </label>
-                            <input type="text" placeholder="Parcel Delivery Address" {...register("parcelDeliveryAddress")} className="input input-bordered w-full max-w-xs" />
-
+                            <input type="text" placeholder="Parcel Delivery Address" {...register("parcelDeliveryAddress",{ required: true })} className="input input-bordered w-full max-w-xs" />
+                            {errors.parcelDeliveryAddress && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text text-white">Requested Delivery Date</span>
 
                             </label>
-                            <input type="date" {...register("requestedDeliveryDate")} placeholder="Requested Delivery Date" className="input input-bordered w-full max-w-xs" />
-
+                            <input type="date" {...register("requestedDeliveryDate",{ required: true })} placeholder="Requested Delivery Date" className="input input-bordered w-full max-w-xs" />
+                            {errors.requestedDeliveryDate && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                     </div>
                     {/* 4th */}
@@ -150,24 +156,24 @@ const BookParcel = () => {
                                 <span className="label-text text-white">Delivery Address Latitude</span>
 
                             </label>
-                            <input type="text" {...register("deliveryAddressLatitude")} placeholder="Delivery Address Latitude" className="input input-bordered w-full max-w-xs" />
-
+                            <input type="text" {...register("deliveryAddressLatitude",{ required: true })} placeholder="Delivery Address Latitude" className="input input-bordered w-full max-w-xs" />
+                            {errors.deliveryAddressLatitude && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text text-white">Your Address longitude</span>
 
                             </label>
-                            <input type="text" {...register("yourDeliveryAddressLongitude")} placeholder="Delivery Address longitude" className="input input-bordered w-full max-w-xs" />
-
+                            <input type="text" {...register("yourDeliveryAddressLongitude",{ required: true })} placeholder="Delivery Address longitude" className="input input-bordered w-full max-w-xs" />
+                            {errors.yourDeliveryAddressLongitude && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
                         <div className=" form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text text-white">Price</span>
 
                             </label>
-                            <input type="number" {...register("price")} placeholder="Price" value={price} className="input input-bordered w-full max-w-xs" />
-
+                            <input type="number" {...register("price",{ required: true })} placeholder="Price" value={price} className="input input-bordered w-full max-w-xs" />
+                            {errors.price && <span className="text-[#F5AB35]">This is required</span>}
                         </div>
 
                     </div>

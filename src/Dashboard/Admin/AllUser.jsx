@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
-import { useState } from "react";
+
 
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure()
-    const [page, setPage] = useState(0)
+    // const [page, setPage] = useState(0)
     const { data: allUsers = [], refetch } = useQuery({
-        queryKey: ['allUsers', page],
+        queryKey: ['allUsers', ],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/allUsers?page=${page}`)
+            const res = await axiosSecure.get('/allUsers')
             return res.data
         }
     })
@@ -52,14 +52,14 @@ const AllUser = () => {
 
     return (
         <div className="lg:min-h-screen">
-            <div className="text-center font-extrabold text-5xl my-8">
-                <h1>All User : {allUsers.length}</h1>
+            <div className="text-center font-extrabold bg-[#F5AB35] text-5xl my-8">
+                <h1 className="p-5 ">All User : {allUsers.length}</h1>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-xs  table-pin-rows table-pin-cols">
                     <thead className="">
-                        <tr className="text-sm -z-10 text-[#222427]">
-                            <th></th>
+                        <tr className="text-sm  -z-10 text-[#222427]">
+                            <th>#</th>
                             <td>User’s Name</td>
                             <td>Phone Number</td>
                             <td>Total Spent Amount</td>
@@ -70,18 +70,18 @@ const AllUser = () => {
                     <tbody>
                         {
                             allUsers?.map((allUser, index) => <tr key={allUser._id}>
-                                <th>{index + 1}</th>
-                                <td>{allUser.name}</td>
-                                <td>{allUser.phoneNumber}</td>
-                                <td>{allUser.requestedDeliveryDate}</td>
+                                <th className="text-xl">{index + 1}</th>
+                                <td className="text-xl">{allUser.name}</td>
+                                <td className="text-xl">{allUser.phoneNumber}</td>
+                                <td className="text-xl">{allUser.requestedDeliveryDate}</td>
 
 
-                                <th>
+                                <th className="text-base">
                                     {allUser.role === 'deliveryMen' ? 'Delivery Men' : <button
                                         onClick={() => makeDeliveryMan(allUser)}
                                         disabled={allUser.role === 'admin'} className="btn">Delivery Men</button>}
                                 </th>
-                                <th>
+                                <th className="text-base">
                                     {allUser.role === 'admin' ? 'Admin' : <button
                                         disabled={allUser.role === 'deliveryMen'}
                                         onClick={() => makeAdminHandle(allUser)}
@@ -97,10 +97,7 @@ const AllUser = () => {
                     </tbody>
 
                 </table>
-                <div className="join ">
-                    <button onClick={() => setPage(page -1)} className="join-item btn btn-outline">Previous page</button>
-                    <button onClick={() => setPage(page +1)} className="join-item btn btn-outline">Next</button>
-                </div>
+              
             </div>
 
         </div>

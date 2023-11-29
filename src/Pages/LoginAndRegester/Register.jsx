@@ -43,16 +43,22 @@ const Register = () => {
                     name: data.name,
                     email: data.email,
                     image: res.data.data.display_url,
-                    role: data.role
+                    role: data.role,
+                    phonNumber:data.phonNumber
                 }
+                console.log(userInfo)
                 axiosOpen.post("/users", userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
                             console.log('user add data base')
                             navigate(from, { replace: true })
+                            navigate('/')
                             toast.success("Register Successes Fully");
                         }
                     })
+            }).catch(error => {
+                console.error(error);
+                toast.error(error.message);
             })
     }
 
@@ -63,19 +69,20 @@ const Register = () => {
 
         googleLogin()
             .then(result => {
-                console.log(result)
                 const userInfo = {
                     email: result.user?.email,
-                    name: result.user?.displayName
+                    name: result.user?.displayName,
+                    
                 }
+                
                 axiosOpen.post("/users", userInfo)
                     .then(res => {
                         console.log(res.data)
-                        // navigate(from,{replace:true})
-                        navigate('/')
+                        navigate(from, { replace: true })
+                        
                     })
 
-                // toast.success('Login success')
+                toast.success('Login success')
 
             })
             .catch(error => {
@@ -216,6 +223,27 @@ const Register = () => {
 
                             </div>
                             <div className="mb-4">
+                                <label
+                                    htmlFor="hs-hero-password-2"
+                                    className="block text-sm font-medium dark:text-white"
+                                >
+                                    <span className="sr-only">Phone Number</span>
+                                </label>
+                                <input
+                                    {...register("phonNumber", {
+                                        required: true,
+                                    
+                                    })}
+                                    type="number"
+                                    id="hs-hero-password-2"
+                                    className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm border "
+                                    placeholder="Phone Number"
+                                />
+                                {errors.phonNumber?.type === "required" && (
+                                    <p role="alert">This filed is required</p>
+                                )}
+                            </div>
+                            <div className="mb-4">
                                 <label className="block">
                                     <span className="sr-only">Choose profile photo</span>
                                     <input
@@ -230,10 +258,8 @@ file:bg-[#F5AB35] file:text-white
                             </div>
                             {/* radio */}
                             <select {...register('role', { required: true })} required className="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm border mb-4">
-                                <option selected="">Select Type role</option>
-                                <option>user</option>
-                                <option>deliveryMen</option>
-
+                                <option value="user" defaultValue>user</option>
+                                <option value="deliveryMen">deliveryMen</option>
                             </select>
 
 

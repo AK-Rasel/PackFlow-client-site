@@ -7,12 +7,10 @@ import Swal from "sweetalert2";
 
 
 const MyBookParcel = () => {
-    const [bookParcel,refetch] = useBookParcel()
+    const [bookParcel, refetch] = useBookParcel()
     console.log(bookParcel)
     const axiosSecure = useAxiosSecure()
-    // const updateHandle = e =>{
 
-    // }
     const cancelHandle = (myBookParcel) => {
         console.log(myBookParcel._id)
 
@@ -37,7 +35,7 @@ const MyBookParcel = () => {
                             icon: "success"
                         });
 
-                    })    
+                    })
             }
         });
 
@@ -50,7 +48,7 @@ const MyBookParcel = () => {
             <div className="overflow-x-auto">
                 <table className="table  table-xs table-pin-rows table-pin-cols">
                     <thead>
-                        <tr className="text-sm bg-[#F5AB35] -z-10 text-[#222427]">
+                        <tr className="text-sm  -z-10 text-[#222427]">
                             <th>#</th>
                             <th>Type</th>
                             <th>Requested Delivery Date</th>
@@ -66,16 +64,18 @@ const MyBookParcel = () => {
                         {
                             bookParcel?.map((myBookParcel, index) =>
                                 <tr key={myBookParcel._id}>
-                                    <th  className="text-xl">{index + 1}</th>
-                                    <td  className="text-xl">{myBookParcel.type}</td>
-                                    <td  className="text-xl">{myBookParcel.requestedDeliveryDate}</td>
-                                    <td  className="text-xl">Littel, Schaden and Vandervort</td>
-                                    <td  className="text-xl">{myBookParcel.requestedDeliveryDate}</td>
-                                    <td  className="text-xl">Delivery Men ID</td>
-                                    <td  className="text-xl">{myBookParcel.status === 'pending' ? <td className="text-green-600 text-xl">{myBookParcel.status}</td>:<td className="text-red-600 text-xl">{myBookParcel.status}</td>}</td>
+                                    <th className="text-xl">{index + 1}</th>
+                                    <td className="text-xl">{myBookParcel.type}</td>
+                                    <td className="text-xl">{myBookParcel.requestedDeliveryDate}</td>
+                                    <td className="text-xl">Littel, Schaden and Vandervort</td>
+                                    <td className="text-xl">{myBookParcel.requestedDeliveryDate}</td>
+                                    <td className="text-xl">Delivery Men ID</td>
+                                    <td className={`text-xl ${myBookParcel.status === 'pending' ? 'text-green-600' : 'text-red-600'}`}>
+                                        {myBookParcel.status}
+                                    </td>
                                     <td>
                                         <button
-                                        disabled={myBookParcel.status === 'cancel'}
+                                            disabled={myBookParcel.status === 'cancel'}
                                             onClick={() => cancelHandle(myBookParcel)}
                                             className="btn mb-2 lg:mb-0 hover:bg-[#F5AB35] text-[#222427] mr-4">Cancel</button>
 

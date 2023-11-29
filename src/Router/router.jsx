@@ -9,13 +9,13 @@ import Register from "../Pages/LoginAndRegester/Register";
 
 import Dashboard from "../mainLayout/Dashboard";
 import UserProfile from "../Dashboard/User/UserProfile";
-import UserHome from "../Dashboard/User/UserHome";
+
 import MyBookParcel from "../Dashboard/User/MyBookParcel";
 import BookParcel from "../Dashboard/User/BookParcel";
-import DeliveryManHome from "../Dashboard/deliveryMan/DeliveryManHome";
+
 import DeliveryList from "../Dashboard/deliveryMan/DeliveryList";
 import Reviews from "../Dashboard/deliveryMan/Reviews";
-// import UserRoute from "../Provider/PrivetRouter";
+
 import PrivetRouter from "../Provider/PrivetRouter";
 import Update from "../Dashboard/User/Update";
 import AllParcels from "../Dashboard/Admin/AllParcels";
@@ -45,13 +45,9 @@ const router = createBrowserRouter([
       element:<PrivetRouter><Dashboard/></PrivetRouter>,
       children:[
         // user
-        {
-          path:'userHome',
-        element:<UserHome/>
-        }
-       , {
+         {
         path:'myParcel',
-        element:<MyBookParcel/>
+        element:<PrivetRouter><MyBookParcel/></PrivetRouter>
       },
         {
         path:'myProfile',
@@ -63,39 +59,36 @@ const router = createBrowserRouter([
       },
         {
         path:'update/:id',
-        element: <Update/>,
+        element: <PrivetRouter><Update/></PrivetRouter>,
         loader:({params}) => fetch(`http://localhost:5000/parcelBook/${params.id}`)
 
       },
       // Delivery Men
-      {
-        path:'deliveryMenHome',
-        element:<DeliveryManHome/>
-      },
+      
       {
         path:'myDeliveryList',
-        element:<DeliveryList/>
+        element:<PrivetRouter><DeliveryList/></PrivetRouter>
       },
       {
         path:'myReviews',
-        element:<Reviews/>
+        element:<PrivetRouter><Reviews/></PrivetRouter>
       },
       // Admin
       {
         path:'allParcels',
-        element:<AllParcels/>
+        element:<PrivetRouter><AllParcels/></PrivetRouter>
       },
       {
         path:'allUsers',
-        element:<AllUser/>
+        element:<PrivetRouter><AllUser/></PrivetRouter>
       },
       {
         path:'allDeliveryMen',
-        element:<AllDeliveryMen/>
+        element:<PrivetRouter><AllDeliveryMen/></PrivetRouter>
       },
       {
         path:'statistics',
-        element:<Statistics/>
+        element:<PrivetRouter><Statistics/></PrivetRouter>
       },
 
     ]

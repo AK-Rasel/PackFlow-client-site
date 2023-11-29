@@ -38,9 +38,7 @@ const SideBar = ({ children }) => {
                                 <Link to={'/'} className="w-full flex justify-center font-bold   normal-case text-3xl text-white">Pack<span className="text-[#F5AB35]">Flow</span> </Link>
                                 <div className="divider divider-warning"></div>
                                 {/* list */}
-                                <li><Link to={'/dashboard/adminHome'} className="btn btn-ghost text-white text-xl w-full ">
-                                    <button>Admin Home</button>
-                                </Link></li>
+                               
                                 <li><Link to={'/dashboard/allParcels'} className="btn btn-ghost text-white text-xl w-full ">
                                     <button>All Parcels</button>
                                 </Link></li>
@@ -65,11 +63,9 @@ const SideBar = ({ children }) => {
                                 <Link to={'/'} className="w-full flex justify-center font-bold   normal-case text-3xl text-white">Pack<span className="text-[#F5AB35]">Flow</span> </Link>
                                 <div className="divider divider-warning"></div>
                                 {/* list */}
-                                <li><Link to={'/dashboard/deliveryMenHome'} className="btn btn-ghost text-white text-xl w-full ">
-                                    <button>Home Delivery Men</button>
-                                </Link></li>
+                                
 
-                                <li><Link to={'/dashboard/myDeliveryList'} className="btn btn-ghost text-white text-xl w-full ">
+                                <li><Link to={'/dashboard/myDeliveryList'} className="btn hover:text-[#F5AB35] btn-ghost text-white text-xl w-full ">
                                     <button>My Delivery List</button>
                                 </Link></li>
 
@@ -82,9 +78,7 @@ const SideBar = ({ children }) => {
                          <div>
                             <Link to={'/'} className="w-full flex justify-center font-bold   normal-case text-3xl text-white">Pack<span className="text-[#F5AB35]">Flow</span> </Link>
                             <div className="divider divider-warning"></div>
-                            <li><Link to={'/dashboard/userHome'} className="btn btn-ghost text-white text-xl w-full ">
-                                <button>User Home</button>
-                            </Link></li>
+                            
                             <li><Link to={'/dashboard/myProfile'} className="btn btn-ghost text-white text-xl w-full ">
                                 <button>My Profile</button>
                             </Link></li>
