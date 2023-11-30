@@ -1,9 +1,10 @@
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../../Hook/useAuth';
+import { Link,  } from 'react-router-dom';
+import {useNavigate, useLocation} from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import useAxiosOpen from '../../Hook/useAxiosOpen';
+import useAuth from '../../Hook/useAuth';
 
 const imgHostingKey = import.meta.env.VITE_Image_Hosting_KEY;
 const imgHosting_api = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
@@ -52,7 +53,7 @@ const Register = () => {
                         if (res.data.insertedId) {
                             console.log('user add data base')
                             navigate(from, { replace: true })
-                            navigate('/')
+                            // navigate('/')
                             toast.success("Register Successes Fully");
                         }
                     })

@@ -4,9 +4,6 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/LoginAndRegester/Login";
 import Register from "../Pages/LoginAndRegester/Register";
 
-
-
-
 import Dashboard from "../mainLayout/Dashboard";
 import UserProfile from "../Dashboard/User/UserProfile";
 
@@ -24,74 +21,121 @@ import AllDeliveryMen from "../Dashboard/Admin/AllDeliveryMen";
 import Statistics from "../Dashboard/Admin/Statistics";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout/>,
-      children: [{
-        path:'/',
-        element:<Home/>
-      }]
-    },
-    {
-      path:'login',
-      element:<Login/>
-    },
-    {
-      path:'register',
-      element:<Register/>
-    },
-    {
-      path:'dashboard',
-      element:<PrivetRouter><Dashboard/></PrivetRouter>,
-      children:[
-        // user
-         {
-        path:'myParcel',
-        element:<PrivetRouter><MyBookParcel/></PrivetRouter>
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
       },
-        {
-        path:'myProfile',
-        element:<PrivetRouter><UserProfile/></PrivetRouter>
+    ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivetRouter>
+        <Dashboard />
+      </PrivetRouter>
+    ),
+    children: [
+      // user
+      {
+        path: "myParcel",
+        element: (
+          <PrivetRouter>
+            <MyBookParcel />
+          </PrivetRouter>
+        ),
       },
-        {
-        path:'bookParcel',
-        element: <PrivetRouter><BookParcel/></PrivetRouter>
+      {
+        path: "myProfile",
+        element: (
+          <PrivetRouter>
+            <UserProfile />
+          </PrivetRouter>
+        ),
       },
-        {
-        path:'update/:id',
-        element: <PrivetRouter><Update/></PrivetRouter>,
-        loader:({params}) => fetch(`https://pack-flow-parcel-management-server.vercel.app/parcelBook/${params.id}`)
-
+      {
+        path: "bookParcel",
+        element: (
+          <PrivetRouter>
+            <BookParcel />
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "update/:id",
+        element: (
+          <PrivetRouter>
+            <Update />
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://pack-flow-parcel-management-server.vercel.app/parcelBook/${params.id}`
+          ),
       },
       // Delivery Men
-      
+
       {
-        path:'myDeliveryList',
-        element:<PrivetRouter><DeliveryList/></PrivetRouter>
+        path: "myDeliveryList",
+        element: (
+          <PrivetRouter>
+            <DeliveryList />
+          </PrivetRouter>
+        ),
       },
       {
-        path:'myReviews',
-        element:<PrivetRouter><Reviews/></PrivetRouter>
+        path: "myReviews",
+        element: (
+          <PrivetRouter>
+            <Reviews />
+          </PrivetRouter>
+        ),
       },
       // Admin
       {
-        path:'allParcels',
-        element:<PrivetRouter><AllParcels/></PrivetRouter>
+        path: "allParcels",
+        element: (
+          <PrivetRouter>
+            <AllParcels />
+          </PrivetRouter>
+        ),
       },
       {
-        path:'allUsers',
-        element:<PrivetRouter><AllUser/></PrivetRouter>
+        path: "allUsers",
+        element: (
+          <PrivetRouter>
+            <AllUser />
+          </PrivetRouter>
+        ),
       },
       {
-        path:'allDeliveryMen',
-        element:<PrivetRouter><AllDeliveryMen/></PrivetRouter>
+        path: "allDeliveryMen",
+        element: (
+          <PrivetRouter>
+            <AllDeliveryMen />
+          </PrivetRouter>
+        ),
       },
       {
-        path:'statistics',
-        element:<PrivetRouter><Statistics/></PrivetRouter>
+        path: "statistics",
+        element: (
+          <PrivetRouter>
+            <Statistics />
+          </PrivetRouter>
+        ),
       },
-
-    ]
-    },
-  ]);
-  export default router;
+    ],
+  },
+]);
+export default router;
