@@ -73,7 +73,7 @@ const MyBookParcel = () => {
                                     <td className={`text-xl ${myBookParcel.status === 'pending' ? 'text-green-600' : 'text-red-600'}`}>
                                         {myBookParcel.status}
                                     </td>
-                                    <td>
+                                    {!myBookParcel.status === 'delivered' ? <td>
                                         <button
                                             disabled={myBookParcel.status === 'cancel'}
                                             onClick={() => cancelHandle(myBookParcel)}
@@ -81,6 +81,78 @@ const MyBookParcel = () => {
 
                                         <Link to={`/dashboard/update/${myBookParcel._id}`}><button disabled={myBookParcel.status !== 'pending'} className="btn">Update</button></Link>
                                     </td>
+                                        :
+                                        <>{/* Open the modal using document.getElementById('ID').showModal() method */}
+                                            <button className="btn" onClick={() => document.getElementById(myBookParcel.name,myBookParcel.deliveryMenId).showModal()}>open modal</button>
+                                            <dialog id={myBookParcel.name} className="modal">
+                                                <div className="modal-box p-10 bg-[#222427]">
+                                                    {/* modal Box */}
+                                                    <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 justify-center items-center w-full mx-auto'>
+                                                        <label className="form-control w-full ">
+                                                            <div className="label">
+                                                                <span className="label-text text-white"> User Name</span>
+
+                                                            </div>
+                                                            <input value={myBookParcel.name} type="text" placeholder="Your Name" className="input input-bordered w-full " />
+
+                                                        </label>
+                                                        <label className="form-control w-full ">
+                                                            <div className="label">
+                                                                <span className="label-text text-white">User Image</span>
+
+                                                            </div>
+                                                            <input type="url" placeholder="User Image" className="input input-bordered w-full " />
+
+                                                        </label>
+                                                        {/* selector */}
+                                                        <label className="form-control w-full ">
+                                                            <div className="label">
+                                                                <span className="label-text text-white">Rating</span>
+                                                                
+                                                            </div>
+                                                            <select className="select select-bordered">
+                                                                <option disabled selected>Pick one</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                            </select>
+                                                            
+                                                        </label>
+                                                        {/* seletor end */}
+                                                       
+                                                        <label className="form-control w-full ">
+                                                            <div className="label">
+                                                                <span className="label-text text-white">Delivery Men Id</span>
+
+                                                            </div>
+                                                            <input type="text" value={myBookParcel.deliveryMenId}placeholder="Delivery Men Id" className="input input-bordered w-full " />
+
+                                                        </label>
+                                                        {/* text area */}
+                                                        <label className="form-control col-span-2">
+  <div className="label ">
+    <span className="label-text text-white">Your bio</span>
+    
+  </div>
+  <textarea className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+ 
+</label>
+                                                        {/* text area end */}
+
+                                                        <label className="form-control mt-7 col-span-2">
+
+                                                            <button className="btn text-lg hover:bg-white outline-none border-none hover:outline-[#F5AB35] bg-[#F5AB35]">submit</button>
+
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                                <form method="dialog" className="modal-backdrop">
+                                                    <button>close</button>
+                                                </form>
+                                            </dialog></>}
                                 </tr>
                             )
                         }

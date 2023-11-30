@@ -57,14 +57,14 @@ const AllUser = () => {
     }
 
     return (
-        <div className="lg:min-h-screen">
+        <div className="min-h-screen">
             <div className="text-center font-extrabold text-5xl my-8">
                 <h1>All User : {allUsers.length}</h1>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-xs  table-pin-rows table-pin-cols">
                     <thead className="">
-                        <tr className="text-sm -z-10 text-[#222427]">
+                        <tr className="lg:text-base text-sm -z-10 text-[#222427]">
                             <th></th>
                             <td>User’s Name</td>
                             <td>Phone Number</td>
@@ -75,11 +75,11 @@ const AllUser = () => {
                     </thead>
                     <tbody>
                         {
-                            currentUsers?.map((allUser, index) => <tr key={allUser._id}>
-                                <th>{index + 1}</th>
-                                <td>{allUser.name}</td>
-                                <td>{allUser.phoneNumber}</td>
-                                <td>{allUser.requestedDeliveryDate}</td>
+                            currentUsers?.map((allUser) => <tr key={allUser._id}>
+                                <th></th>
+                                <td className="lg:text-xl">{allUser.name}</td>
+                                <td className="lg:text-xl">{allUser.phoneNumber}</td>
+                                <td className="lg:text-xl">{allUser.requestedDeliveryDate}</td>
 
 
                                 <th>
