@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import useBookParcel from "../../Hook/useBookParcel";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
+// import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 
 
@@ -83,7 +84,7 @@ const MyBookParcel = () => {
                                     </td>
                                         :
                                         <>{/* Open the modal using document.getElementById('ID').showModal() method */}
-                                            <button className="btn" onClick={() => document.getElementById(myBookParcel.name,myBookParcel.deliveryMenId).showModal()}>open modal</button>
+                                            <button className="btn" onClick={() => document.getElementById(myBookParcel.name,myBookParcel.deliveryMenId).showModal()}>Review</button>
                                             <dialog id={myBookParcel.name} className="modal">
                                                 <div className="modal-box p-10 bg-[#222427]">
                                                     {/* modal Box */}

@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         {
         path:'update/:id',
         element: <PrivetRouter><Update/></PrivetRouter>,
-        loader:({params}) => fetch(`http://localhost:5000/parcelBook/${params.id}`)
+        loader:({params}) => fetch(`https://pack-flow-parcel-management-server.vercel.app/parcelBook/${params.id}`)
 
       },
       // Delivery Men

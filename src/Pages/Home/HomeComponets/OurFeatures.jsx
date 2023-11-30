@@ -1,29 +1,13 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosOpen from "../../../Hook/useAxiosOpen";
+
 const OurFeatures = () => {
-    // const [features, setFeatures] = useState([]);
-    // useEffect(() => {
-    //     fetch('../../../../public/Features.json')
-    //         .then(res => res.json())
-    //         .then(data => setFeatures(data))
-    // }, [])
-    const axiosSecure = useAxiosOpen()
-
-
-    const { data: features = []} = useQuery({
-        queryKey: ['features',],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/ourFeatures')
-            return res.data
-        }
-    })
-
-
-
-
-
+    const [features, setFeatures] = useState([]);
+    useEffect(() => {
+        fetch('../../../../public/Features.json')
+            .then(res => res.json())
+            .then(data => setFeatures(data))
+    }, [])
     // console.log(features)
     return (
         <div>
