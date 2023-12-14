@@ -1,3 +1,4 @@
+import UserExperience from "../../components/UserExperience/UserExperience";
 import Banner from "./HomeComponets/Banner";
 import OurFeatures from "./HomeComponets/OurFeatures";
 import TopDeliveryMan from "./HomeComponets/TopDeliveryMan";
@@ -11,6 +12,7 @@ const Home = () => {
             <OurFeatures/>
             <WhyShipEase/>
             <TopDeliveryMan/>
+            <UserExperience/>
         </div>
     );
 };

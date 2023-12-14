@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://pack-flow-parcel-management-server.vercel.app/parcelBook/${params.id}`
+            `http://localhost:5000/parcelBook/${params.id}`
           ),
       },
       // Delivery Men
