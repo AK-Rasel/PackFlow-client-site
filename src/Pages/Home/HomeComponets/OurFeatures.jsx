@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 
+import OurfeaturesSkeleton from "./OurfeaturesSkeleton";
+
 
 const OurFeatures = () => {
     const [features, setFeatures] = useState([]);
+    // const {loading} = useAuth()
+    const [isLoding,setIsLoding] = useState(true)
     useEffect(() => {
-        fetch('../../../../public/Features.json')
+        setTimeout(() => {
+            fetch('/Features.json')
             .then(res => res.json())
-            .then(data => setFeatures(data))
+            .then(data => {
+                setFeatures(data)
+                setIsLoding(false)
+            })
+        }, 1000);
+        
     }, [])
     // console.log(features)
     return (
@@ -20,8 +30,15 @@ const OurFeatures = () => {
                 {/* Grid */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                     {/* Card */}
-                    {
-                        features?.map(feature => <div data-aos="fade-up" key={feature.index}
+                    
+                    { isLoding ? <>
+                    <OurfeaturesSkeleton/>
+                    <OurfeaturesSkeleton/>
+                    <OurfeaturesSkeleton/>
+                    
+                    </> :
+                        features?.map(feature => 
+                        <div data-aos="fade-up" key={feature.index}
                             className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
 
                         >
